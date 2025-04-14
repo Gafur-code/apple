@@ -16,18 +16,10 @@
       padding: 20px;
     }
 
-    h1 {
-      font-size: 24px;
-      margin-top: 10px;
-      color: white;
-    }
-
     .logo {
-      font-family: cursive;
-      font-size: 32px;
       margin: 20px 0;
-      color: gold;
-      text-shadow: 1px 1px 2px #000;
+      max-width: 300px;
+      width: 80%;
     }
 
     .boxes {
@@ -68,9 +60,11 @@
   </style>
 </head>
 <body>
-  <h1>Apple of Fortune Hack</h1>
-  <div class="logo">🍎 Apple of Fortune</div>
-  
+
+  <!-- Логотип -->
+  <img src="https://i.imgur.com/He4zVFI.png" alt="Apple of Fortune" class="logo">
+
+  <!-- Ячейки -->
   <div class="boxes" id="boxes">
     <div class="box"></div>
     <div class="box"></div>
@@ -79,6 +73,7 @@
     <div class="box"></div>
   </div>
 
+  <!-- Кнопки -->
   <button onclick="showApple()">Show Apple</button>
   <button onclick="resetBoxes()">Reset</button>
 
