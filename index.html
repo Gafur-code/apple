@@ -104,7 +104,6 @@
     <button onclick="verificarID()">دخول</button>
     <div id="errorMsg"></div>
     <div id="successMsg"></div>
-    <button id="payButton" style="display: none;" onclick="alert('جارٍ إعادة التوجيه إلى الدفع...')">متابعة الدفع</button>
   </div>
 
   <!-- Основной интерфейс -->
@@ -130,16 +129,13 @@
       const id = document.getElementById('idInput').value;
       const errorMsg = document.getElementById('errorMsg');
       const successMsg = document.getElementById('successMsg');
-      const payButton = document.getElementById('payButton');
       const valid = /^12\d{8}$/.test(id);
 
       if (valid) {
         errorMsg.textContent = '';
         successMsg.textContent = 'يرجى تعبئة 65 درهم (MAD) للمتابعة';
-        payButton.style.display = 'inline-block';
       } else {
         successMsg.textContent = '';
-        payButton.style.display = 'none';
         errorMsg.textContent = 'معرّف غير صالح';
       }
     }
