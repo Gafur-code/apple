@@ -1,90 +1,99 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apple of Fortune</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        h1 {
-            font-size: 48px;
-            color: #333;
-            margin-bottom: 40px;
-        }
-        #signal-btn {
-            padding: 15px 30px;
-            font-size: 18px;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            margin-bottom: 40px;
-        }
-        #signal-btn:hover {
-            background-color: #45a049;
-        }
-        #squares-container {
-            display: flex;
-            gap: 10px;
-        }
-        .square {
-            width: 100px;
-            height: 100px;
-            background-color: #2F4F4F; /* тёмно-зелёный */
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .apple {
-            width: 60px;
-            height: 60px;
-            background-image: url('apple.png'); /* Замените на имя вашего файла */
-            background-size: cover;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apple of Fortune Hack</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #8b3f24;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-top: 10px;
+      color: white;
+    }
+
+    .logo {
+      font-family: cursive;
+      font-size: 32px;
+      margin: 20px 0;
+      color: gold;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .boxes {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .box {
+      width: 60px;
+      height: 60px;
+      background-color: green;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .apple {
+      background-color: red !important;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      background-color: #550000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #770000;
+    }
+  </style>
 </head>
 <body>
-    <h1>Apple of Fortune</h1>
-    <button id="signal-btn" onclick="showApple()">SIGNAL</button>
-    <div id="squares-container">
-        <div class="square" id="square1"></div>
-        <div class="square" id="square2"></div>
-        <div class="square" id="square3"></div>
-        <div class="square" id="square4"></div>
-        <div class="square" id="square5"></div>
-    </div>
+  <h1>Apple of Fortune Hack</h1>
+  <div class="logo">🍎 Apple of Fortune</div>
+  
+  <div class="boxes" id="boxes">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
 
-    <script>
-        function showApple() {
-            // Очищаем все квадраты от яблока
-            const squares = document.querySelectorAll('.square');
-            squares.forEach(square => {
-                square.innerHTML = '';
-            });
+  <button onclick="showApple()">Show Apple</button>
+  <button onclick="resetBoxes()">Reset</button>
 
-            // Выбираем случайный квадрат (от 1 до 5)
-            const randomIndex = Math.floor(Math.random() * 5) + 1;
-            const selectedSquare = document.getElementById(`square${randomIndex}`);
+  <script>
+    const boxes = document.querySelectorAll('.box');
 
-            // Добавляем яблоко в случайный квадрат
-            const apple = document.createElement('div');
-            apple.classList.add('apple');
-            selectedSquare.appendChild(apple);
-        }
+    function showApple() {
+      resetBoxes();
+      const randomIndex = Math.floor(Math.random() * boxes.length);
+      boxes[randomIndex].classList.add('apple');
+    }
 
-        // Показываем квадраты сразу при загрузке страницы
-        showApple();
-    </script>
+    function resetBoxes() {
+      boxes.forEach(box => box.classList.remove('apple'));
+    }
+  </script>
 </body>
 </html>
