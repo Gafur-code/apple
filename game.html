@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -20,6 +20,10 @@
       margin: 20px 0;
       max-width: 300px;
       width: 80%;
+    }
+
+    .boxes, .buttons, #gameContainer {
+      display: none;
     }
 
     .boxes {
@@ -57,6 +61,27 @@
     button:hover {
       background-color: #770000;
     }
+
+    #authContainer {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    #idInput {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 10px;
+      width: 200px;
+      text-align: center;
+    }
+
+    #errorMsg {
+      color: #ffdede;
+      margin-top: 5px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -64,22 +89,49 @@
   <!-- Логотип -->
   <img src="IMG_6957.PNG" alt="Apple of Fortune" class="logo">
 
-
-  <!-- Ячейки -->
-  <div class="boxes" id="boxes">
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
+  <!-- Форма авторизации -->
+  <div id="authContainer">
+    <h2>Ingrese su ID de 1xBet</h2>
+    <input type="text" id="idInput" placeholder="ID (10 dígitos)" maxlength="10" />
+    <br>
+    <button onclick="verificarID()">Enter</button>
+    <div id="errorMsg"></div>
   </div>
 
-  <!-- Кнопки -->
-  <button onclick="showApple()">Show Apple</button>
-  <button onclick="resetBoxes()">Reset</button>
+  <!-- Основной интерфейс -->
+  <div id="gameContainer">
+    <div class="boxes" id="boxes">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+
+    <div class="buttons" id="gameButtons">
+      <button onclick="showApple()">Show Apple</button>
+      <button onclick="resetBoxes()">Reset</button>
+    </div>
+  </div>
 
   <script>
     const boxes = document.querySelectorAll('.box');
+
+    function verificarID() {
+      const id = document.getElementById('idInput').value;
+      const errorMsg = document.getElementById('errorMsg');
+      const valid = /^12\d{8}$/.test(id);
+
+      if (valid) {
+        document.getElementById('authContainer').style.display = 'none';
+        document.getElementById('gameContainer').style.display = 'block';
+        document.getElementById('boxes').style.display = 'flex';
+        document.getElementById('gameButtons').style.display = 'block';
+        errorMsg.textContent = '';
+      } else {
+        errorMsg.textContent = 'معرّف غير صالح';
+      }
+    }
 
     function showApple() {
       resetBoxes();
@@ -91,5 +143,6 @@
       boxes.forEach(box => box.classList.remove('apple'));
     }
   </script>
+
 </body>
 </html>
