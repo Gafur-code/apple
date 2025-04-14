@@ -1,99 +1,159 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apple of Fortune</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        h1 {
-            font-size: 48px;
-            color: #333;
-        }
-        #input-container {
-            margin: 20px 0;
-        }
-        #number-input {
-            padding: 10px;
-            font-size: 16px;
-            width: 200px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        #signal-btn {
-            display: none;
-            background-color: #2196F3;
-        }
-        #signal-btn:hover {
-            background-color: #1e88e5;
-        }
-        #message {
-            display: none;
-            color: red;
-            font-size: 24px;
-            margin-top: 20px;
-        }
-        img {
-            width: 200px;
-            height: auto;
-            margin: 20px 0;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apple of Fortune Hack</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #8b3f24;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .logo {
+      margin: 20px 0;
+      max-width: 300px;
+      width: 80%;
+    }
+
+    .boxes, .buttons, #gameContainer {
+      display: none;
+    }
+
+    .boxes {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .box {
+      width: 60px;
+      height: 60px;
+      background-color: green;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .apple {
+      background-color: red !important;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      background-color: #550000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #770000;
+    }
+
+    #authContainer {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    #idInput {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 10px;
+      width: 200px;
+      text-align: center;
+    }
+
+    #errorMsg, #successMsg {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    #errorMsg {
+      color: #ffdede;
+    }
+
+    #successMsg {
+      color: #fffb99;
+    }
+  </style>
 </head>
 <body>
-    <h1>APPLE OF FORTUNE</h1>
-    <img src="apple.jpg" alt="Apple Image">
-    <div id="input-container">
-        <input type="text" id="number-input" maxlength="10" placeholder="1xbet أدخل المعرف من">
-        <button onclick="checkNumber()">إرسال</button>
+
+  <!-- Логотип -->
+  <img src="IMG_6957.PNG" alt="Apple of Fortune" class="logo">
+
+  <!-- Форма авторизации -->
+  <div id="authContainer">
+    <h2>1xbet أدخل رقم تعريف</h2>
+    <input type="text" id="idInput" placeholder="ID (1XBET)" maxlength="10" />
+    <br>
+    <button onclick="verificarID()">دخول</button>
+    <div id="errorMsg"></div>
+    <div id="successMsg"></div>
+    <button id="payButton" style="display: none;" onclick="alert('جارٍ إعادة التوجيه إلى الدفع...')">متابعة الدفع</button>
+  </div>
+
+  <!-- Основной интерфейс -->
+  <div id="gameContainer">
+    <div class="boxes" id="boxes">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
     </div>
-    <button id="signal-btn" onclick="showMessage()">SIGNAL</button>
-    <div id="message">1xbet قم بشحن رصيدك في  بمبلغ 60 درهم مغربي.</div>
 
-    <script>
-        function checkNumber() {
-            const input = document.getElementById('number-input').value;
-            const inputContainer = document.getElementById('input-container');
-            const signalBtn = document.getElementById('signal-btn');
+    <div class="buttons" id="gameButtons">
+      <button onclick="showApple()">إظهار التفاحة</button>
+      <button onclick="resetBoxes()">إعادة الضبط</button>
+    </div>
+  </div>
 
-            // Проверяем, что введено 10 цифр
-            if (input.length === 10 && /^\d+$/.test(input)) {
-                const prefix = input.slice(0, 2);
-                // Проверяем, начинается ли число с 12, 13 или 14
-                if (prefix === '12' || prefix === '13' || prefix === '14') {
-                    inputContainer.style.display = 'none'; // Скрываем поле ввода
-                    signalBtn.style.display = 'block'; // Показываем кнопку "Получить сигнал"
-                } else {
-                    alert('أدخل هويتك');
-                }
-            } else {
-                alert('أدخل هويتك');
-            }
-        }
+  <script>
+    const boxes = document.querySelectorAll('.box');
 
-        function showMessage() {
-            const message = document.getElementById('message');
-            message.style.display = 'block'; // Показываем сообщение
-        }
-    </script>
+    function verificarID() {
+      const id = document.getElementById('idInput').value;
+      const errorMsg = document.getElementById('errorMsg');
+      const successMsg = document.getElementById('successMsg');
+      const payButton = document.getElementById('payButton');
+      const valid = /^12\d{8}$/.test(id);
+
+      if (valid) {
+        errorMsg.textContent = '';
+        successMsg.textContent = 'يرجى تعبئة 65 درهم (MAD) للمتابعة';
+        payButton.style.display = 'inline-block';
+      } else {
+        successMsg.textContent = '';
+        payButton.style.display = 'none';
+        errorMsg.textContent = 'معرّف غير صالح';
+      }
+    }
+
+    function showApple() {
+      resetBoxes();
+      const randomIndex = Math.floor(Math.random() * boxes.length);
+      boxes[randomIndex].classList.add('apple');
+    }
+
+    function resetBoxes() {
+      boxes.forEach(box => box.classList.remove('apple'));
+    }
+  </script>
+
 </body>
 </html>
