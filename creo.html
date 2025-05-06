@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الحصول على الإشارة</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #8b3f24;
+      color: white;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #toggle {
+      display: none;
+    }
+
+    label {
+      background-color: #550000;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-size: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    label:hover {
+      background-color: #770000;
+    }
+
+    .image {
+      display: none;
+      margin-top: 20px;
+      max-width: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+
+    #toggle:checked + label + img {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="checkbox" id="toggle">
+  <label for="toggle">الحصول على الإشارة</label>
+  <img src="signal.jpg" alt="الإشارة" class="image" />
+
+</body>
+</html>
